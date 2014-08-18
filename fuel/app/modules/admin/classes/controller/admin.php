@@ -88,15 +88,22 @@ class Controller_Admin extends Controller_Base
 	}
 
 	/**
-	 * The index action.
-	 *
-	 * @access  public
-	 * @return  void
+	 * Мндексная страница
 	 */
 	public function action_index()
 	{            
+            // Кол-во муниципалитетов и учреждений
+            $data['municipalities_count'] = \Model_Municipality::count();
+            $data['institutions_count'] = \Model_Institution::count();
+            
+            // Последних 5 учреждений
+            $data['last_insts'] = \Model_Institution::find('all', array(
+                'limit' => 5,
+                'order_by' => array('id' => 'desc')
+            ));
+            
             $this->template->title = 'Начало работы';
-            $this->template->content = \View::forge('dashboard');
+            $this->template->content = \View::forge('dashboard', $data);
 	}
 
 }

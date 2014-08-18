@@ -9,8 +9,13 @@
 	</style>
 	<?php echo Asset::js(array(
 		'//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
-		'//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'
+		'//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js',                
 	)); ?>
+        
+        <?php if (isset($js)): ?>
+            <?php echo Asset::js($js); ?>
+        <?php endif; ?>
+        
 	<script>
 		$(function(){ $('.topbar').dropdown(); });
 	</script>
@@ -33,13 +38,13 @@
 					<li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
 						<?php echo Html::anchor('admin', 'Начало работы') ?>
 					</li>
-                                        <li><a href="#">Муниципальные образования</a></li>
-                                        <li><a href="#">Учреждения</a></li>
-                                        <li class="dropdown">
+                                        <li class="<?php echo Uri::segment(2) == 'municipalities' ? 'active' : '' ?>"><?php echo Html::anchor('admin/municipalities', 'Муниципальные образования') ?></li>
+                                        <li class="<?php echo Uri::segment(2) == 'institutions' ? 'active' : '' ?>"><?php echo Html::anchor('admin/institutions', 'Учреждения') ?></li>
+                                        <li  class="dropdown <?php echo Uri::segment(2) == 'lists' ? 'active' : '' ?>">
                                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Списки <span class="caret"></span></a>
                                             <ul role="menu" class="dropdown-menu">
-                                                <li><a href="#">Виды учреждений</a></li>
-                                                <li><a href="#">Типы учреждений</a></li>
+                                                <li><?php echo Html::anchor('admin/lists/kinds', 'Виды учреждений') ?></li>
+                                                <li><?php echo Html::anchor('admin/lists/types', 'Типы учреждений') ?></li>
                                             </ul>
                                         </li>
                                         <li><a href="#">Настройки</a></li>
@@ -48,7 +53,7 @@
 					<li class="dropdown">
 						<a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $current_user->username ?> <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><?php echo Html::anchor('admin/logout', 'Logout') ?></li>
+							<li><?php echo Html::anchor('admin/logout', 'Выход') ?></li>
 						</ul>
 					</li>
 				</ul>

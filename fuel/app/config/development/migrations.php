@@ -7,6 +7,9 @@ return array (
       'default' => 
       array (
         0 => '001_create_institutions',
+        1 => '002_create_municipalities',
+        2 => '003_create_institution_types',
+        3 => '004_create_institution_kinds',
       ),
     ),
     'module' => 

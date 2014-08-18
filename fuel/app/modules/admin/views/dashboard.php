@@ -5,16 +5,16 @@
 <div class="row">
 	<div class="col-md-4">
 		<h3>Статистика</h3>
-		<p>На данный момент в базе данных содержится следующие объекты:</p>
+		<p>На данный момент в базе данных содержатся следующие объекты:</p>
                 <table class="table">                    
                     <tbody>
                         <tr class="warning">
                             <td><b>Муниципальных образований</b></td>
-                            <td>35</td>
+                            <td><?php echo $municipalities_count; ?></td>
                         </tr>
                         <tr  class="success">
                             <td><b>Учреждений</b></td>
-                            <td>1000</td>
+                            <td><?php echo $institutions_count; ?></td>
                         </tr>
                     </tbody>                    
                 </table>
@@ -22,28 +22,29 @@
 	<div class="col-md-4">
             <h3>Последние учреждения</h3>
             <p>Последних 5 добавленных учреждений с быстрой навигацией к ним:</p>
+            <?php if ($last_insts): ?>
             <table class="table table-striped">                    
                 <tbody>
-                    <tr>
-                        <td><b>Школа №1</b></td>
-                        <td>18.08.2014</td>
-                        <td><a href="#" title="Редактировать"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    </tr>
-                    <tr>
-                        <td><b>Школа №2</b></td>
-                        <td>18.08.2014</td>
-                        <td><a href="#" title="Редактировать"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    </tr>
+                    <?php foreach ($last_insts as $value): ?>
+                        <tr>
+                            <td><b><?php echo $value->short_title; ?></b></td>
+                            <td><b><?php echo Date::forge($value->created_at)->format('%Y.%m.%d'); ?></b></td>
+                            <td><?php echo Html::anchor('admin/institutions/edit/'.$value->id, '<span class="glyphicon glyphicon-edit"></span>', array('title' => 'Редактировать')); ?></td>
+                        </tr>                    
+                    <?php endforeach; ?>
                 </tbody>                    
             </table>
+            <?php else: ?>
+                <div class="alert alert-danger" role="alert"><strong>Информация отсутствует.</strong> <?php echo Html::anchor('admin/institutions/create', 'Добавьте'); ?> новое учреждение.</div>
+            <?php endif; ?>
 	</div>
 	<div class="col-md-4">
 		<h3>Популярные действия</h3>
                 <p>Воспользуйтесь быстрой навигацией к необходимой функции:</p>
-		<ul style="max-width: 300px;" class="nav nav-pills nav-stacked">
-                    <li><a href="#"><span class="glyphicon glyphicon-plus"></span> Добавить учреждение</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-list"></span> Список муниципальных образований</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-list"></span> Список учреждений</a></li>
+		<ul class="nav nav-pills nav-stacked">
+                    <li><?php echo Html::anchor('admin/institutions/create', '<span class="glyphicon glyphicon-plus"></span> Добавить учреждение'); ?></li>
+                    <li><?php echo Html::anchor('admin/municipalities', '<span class="glyphicon glyphicon-list"></span> Список муниципальных образований'); ?></li>
+                    <li><?php echo Html::anchor('admin/institutions', '<span class="glyphicon glyphicon-list"></span> Список учреждений'); ?></li>
                 </ul>
 	</div>
 </div>
