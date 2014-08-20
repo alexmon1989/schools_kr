@@ -21,7 +21,7 @@
 
 			<div class="form-group <?php echo ! $val->error('password') ?: 'has-error' ?>">
 				<label for="password">Пароль:</label>
-				<?php echo Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'Password')); ?>
+				<?php echo Form::password('password', null, array('class' => 'form-control', 'placeholder' => 'Пароль')); ?>
 
 				<?php if ($val->error('password')): ?>
 					<span class="control-label"><?php echo $val->error('password')->get_message(':label не может быть пустым'); ?></span>

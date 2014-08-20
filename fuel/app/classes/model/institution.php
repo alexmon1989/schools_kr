@@ -10,7 +10,7 @@ class Model_Institution extends \Orm\Model
 		'id',
 		'municipality_id',
 		'institution_kind_id',
-		'institiution_type_id',
+		'institution_type_id',
 		'full_title',
 		'short_title',
 		'address',

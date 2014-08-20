@@ -10,6 +10,7 @@ return array (
         1 => '002_create_municipalities',
         2 => '003_create_institution_types',
         3 => '004_create_institution_kinds',
+        4 => '005_rename_field_institiution_type_id_to_institution_type_id_in_institutions',
       ),
     ),
     'module' => 

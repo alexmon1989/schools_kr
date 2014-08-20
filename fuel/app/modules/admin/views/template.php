@@ -3,13 +3,19 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
-	<?php echo Asset::css('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'); ?>
+	<?php echo Asset::css(array(
+                '//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css',
+                '//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.css'
+            )
+        ); ?>
 	<style>
 		body { margin: 50px; }
 	</style>
 	<?php echo Asset::js(array(
 		'//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
-		'//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js',                
+		'//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js',  
+                '//cdn.datatables.net/1.10.2/js/jquery.dataTables.js',
+                '//cdn.datatables.net/plug-ins/725b2a2115b/integration/bootstrap/3/dataTables.bootstrap.js'
 	)); ?>
         
         <?php if (isset($js)): ?>
