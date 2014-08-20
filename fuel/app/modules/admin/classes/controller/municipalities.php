@@ -50,12 +50,12 @@ class Controller_Municipalities extends Controller_Admin
 
                 else
                 {
-                    Session::set_flash('error', 'Could not save municipality.');
+                    \Session::set_flash('error', 'Could not save municipality.');
                 }
             }
             else
             {
-                Session::set_flash('error', $val->error());
+                \Session::set_flash('error', $val->error());
             }
         }
 

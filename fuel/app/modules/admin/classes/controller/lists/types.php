@@ -52,7 +52,7 @@ class Controller_Lists_Types extends Controller_Admin
             }
             else
             {
-               \Session::set_flash('error', $val->error());
+                \Session::set_flash('error', $val->error());
             }
         }
 

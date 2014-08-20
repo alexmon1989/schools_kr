@@ -6,7 +6,7 @@
                     <?php echo Form::label('Название*', 'title', array('class'=>'control-label')); ?>
                     <?php echo Form::input('title', Input::post('title', isset($municipality) ? $municipality->title : ''), array('class' => 'form-control', 'placeholder'=>'Название')); ?>
                 </div>
-
+        
                 <p class="bg-primary" style="padding: 15px"><strong>Координаты</strong> (введите вручную или поставьте метку на карте справа на нужное место):</p>
 
                 <div class="form-group">

@@ -1,33 +1,42 @@
 <h2>Список <span class='text-muted'>Муниципальных образований</span></h2>
 <br>
 <?php if ($municipalities): ?>
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th>Latitude</th>
-			<th>Longtitude</th>
-			<th>Data json</th>
-			<th>&nbsp;</th>
-		</tr>
-	</thead>
-	<tbody>
-<?php foreach ($municipalities as $item): ?>		<tr>
-
-			<td><?php echo $item->title; ?></td>
-			<td><?php echo $item->latitude; ?></td>
-			<td><?php echo $item->longtitude; ?></td>
-			<td><?php echo $item->data_json; ?></td>
-			<td>
-				<div class="btn-toolbar">
-					<div class="btn-group">
-						<?php echo Html::anchor('municipalities/view/'.$item->id, '<i class="icon-eye-open"></i> View', array('class' => 'btn btn-small')); ?>						<?php echo Html::anchor('municipalities/edit/'.$item->id, '<i class="icon-wrench"></i> Edit', array('class' => 'btn btn-small')); ?>						<?php echo Html::anchor('municipalities/delete/'.$item->id, '<i class="icon-trash icon-white"></i> Delete', array('class' => 'btn btn-small btn-danger', 'onclick' => "return confirm('Are you sure?')")); ?>					</div>
-				</div>
-
-			</td>
-		</tr>
-<?php endforeach; ?>	</tbody>
+<table class="table table-striped" id="municipalities_table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th width="20%">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>        
+        <?php $i = 1; ?>
+        <?php foreach ($municipalities as $item): ?>		
+            <tr>
+                <td><?php echo $i; ?></td>
+                <td><?php echo $item->title; ?></td>
+                <td>
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <?php echo Html::anchor('admin/municipalities/edit/'.$item->id, '<i class="glyphicon glyphicon-edit"></i> Редактировать', array('class' => 'btn btn-sm btn-primary')); ?>
+                            <?php echo Html::anchor('admin/municipalities/delete/'.$item->id, '<i class="glyphicon glyphicon-trash"></i> Удалить', array('class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Вы уверены?')")); ?>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        <?php $i++; ?>
+        <?php endforeach; ?>	
+    </tbody>
 </table>
+
+<script>
+    $(document).ready( function () {
+        $('#municipalities_table').DataTable({
+            "columnDefs": [ { "targets": 2, "orderable": false } ],
+            "language" :  {url: '//cdn.datatables.net/plug-ins/725b2a2115b/i18n/Russian.json'}
+        });
+    } );
+</script>
 
 <?php else: ?>
 <p>Информация отсутствует.</p>

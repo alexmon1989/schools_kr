@@ -4,7 +4,7 @@
  * Модель для управления объектом "Вид учреждения"
  */
 
-class Model_Institution_Type extends \Orm\Model
+class Model_Institution_Kind extends \Orm\Model
 {
     protected static $_properties = array(
         'id',
@@ -46,5 +46,18 @@ class Model_Institution_Type extends \Orm\Model
         $val->add_field('value', 'Название', 'required|max_length[255]');
 
         return $val;
+    }
+    
+    public static function get_list_for_select()
+    {
+        $res = array('' => '');
+        
+        $list = self::find('all', array('order_by' => array('value' => 'desc')));
+        foreach ($list as $item)
+        {
+            $res[$item->id] = $item->value;
+        }
+        
+        return $res;
     }
 }

@@ -19,7 +19,7 @@ class Controller_Lists_Kinds extends Controller_Admin
      */
     public function action_index()
     {
-        $data['list'] = \Model_Institution_Type::find('all');
+        $data['list'] = \Model_Institution_Kind::find('all');
         $this->template->content = \View::forge('lists/kinds/index', $data);
     }
    
@@ -30,11 +30,11 @@ class Controller_Lists_Kinds extends Controller_Admin
     {
         if (\Input::method() == 'POST')
         {
-            $val = \Model_Institution_Type::validate('create');
+            $val = \Model_Institution_Kind::validate('create');
 
             if ($val->run())
             {
-                $kind = \Model_Institution_Type::forge(array(
+                $kind = \Model_Institution_Kind::forge(array(
                     'value' => \Input::post('value'),
                 ));
 
@@ -69,13 +69,13 @@ class Controller_Lists_Kinds extends Controller_Admin
     {
         is_null($id) and \Response::redirect('admin/lists/kinds');
 
-        if ( ! $kind = \Model_Institution_Type::find($id))
+        if ( ! $kind = \Model_Institution_Kind::find($id))
         {
             \Session::set_flash('error', 'Невозможно найти вид учреждения с идентификатором #'.$id);
             \Response::redirect_back('admin/lists/kinds');
         }
 
-        $val = \Model_Institution_Type::validate('edit');
+        $val = \Model_Institution_Kind::validate('edit');
 
         if ($val->run())
         {
@@ -116,7 +116,7 @@ class Controller_Lists_Kinds extends Controller_Admin
     {        
         is_null($id) and \Response::redirect('admin/lists/kinds');
 
-        if ($kind = \Model_Institution_Type::find($id))
+        if ($kind = \Model_Institution_Kind::find($id))
         {
             $kind->delete();
             \Session::set_flash('success', 'Успешно удалён вид учреждения с идентификатором #'.$id);
