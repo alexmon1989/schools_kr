@@ -1,7 +1,10 @@
-<h2>Editing <span class='muted'>Municipality</span></h2>
+<h2>Редактирование <span class='text-muted'>Муниципалитетного образования</span></h2>
 <br>
 
-<?php echo render('municipalities/_form'); ?>
-<p>
-	<?php echo Html::anchor('municipalities/view/'.$municipality->id, 'View'); ?> |
-	<?php echo Html::anchor('municipalities', 'Back'); ?></p>
+<p><?php echo Html::anchor('admin/municipalities', 'Назад к списку'); ?></p>
+
+<?php echo render('municipalities/_form_edit'); ?>
+
+<?php echo render('municipalities/_table_json'); ?>
+
+<p><?php echo Html::anchor('admin/municipalities', 'Назад к списку'); ?></p>

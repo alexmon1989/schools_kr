@@ -19,7 +19,7 @@
                     <div class="btn-toolbar">
                         <div class="btn-group">
                             <?php echo Html::anchor('admin/municipalities/edit/'.$item->id, '<i class="glyphicon glyphicon-edit"></i> Редактировать', array('class' => 'btn btn-sm btn-primary')); ?>
-                            <?php echo Html::anchor('admin/municipalities/delete/'.$item->id, '<i class="glyphicon glyphicon-trash"></i> Удалить', array('class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('Вы уверены?')")); ?>
+                            <?php echo Html::anchor('admin/municipalities/delete/'.$item->id, '<i class="glyphicon glyphicon-trash"></i> Удалить', array('class' => 'btn btn-sm btn-danger', 'onclick' => "return confirm('В случае удаления муниципального образования будут также удалены все школы, которые в нём расположены. Вы уверены?')")); ?>
                         </div>
                     </div>
                 </td>

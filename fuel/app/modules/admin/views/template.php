@@ -54,6 +54,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="#">Настройки</a></li>
+                                        <li class="<?php echo Uri::segment(2) == 'users' ? 'active' : '' ?>"><?php echo Html::anchor('admin/users', 'Пользователи') ?></li>                                 
 				</ul>
 				<ul class="nav navbar-nav pull-right">
 					<li class="dropdown">
