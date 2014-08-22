@@ -5,7 +5,7 @@
     <strong>Внимание!</strong> Для создания муниципалитетного образования заполните основные данные. Дополнительные данные вы сможете заполнить после создания в режиме редактирования.
 </div>
 
-<?php echo render('municipalities/_form_create'); ?>
+<?php echo render('municipalities/_form'); ?>
 
 
 <p><?php echo Html::anchor('admin/municipalities', 'Назад к списку'); ?></p>

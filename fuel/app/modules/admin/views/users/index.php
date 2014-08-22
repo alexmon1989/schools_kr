@@ -1,4 +1,4 @@
-<h2>Список пользователей</h2>
+<h2>Список <span class='text-muted'>Пользователей</span></h2>
 
 <br>
 <?php if ($users): ?>

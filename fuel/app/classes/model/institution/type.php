@@ -4,7 +4,7 @@
  * Модель для управления объектом "Тип учреждения"
  */
 
-class Model_Institution_Type extends \Orm\Model
+class Model_Institution_Type extends Model_MyModel
 {
     protected static $_properties = array(
         'id',
@@ -47,17 +47,4 @@ class Model_Institution_Type extends \Orm\Model
 
         return $val;
     }   
-    
-    public static function get_list_for_select()
-    {
-        $res = array('' => '');
-        
-        $list = self::find('all', array('order_by' => array('value' => 'desc')));
-        foreach ($list as $item)
-        {
-            $res[$item->id] = $item->value;
-        }
-        
-        return $res;
-    }
 }

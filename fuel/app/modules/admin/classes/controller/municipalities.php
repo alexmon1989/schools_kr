@@ -60,7 +60,7 @@ class Controller_Municipalities extends Controller_Admin
         }
 
         // Подгружаем скрипты карты
-        $this->template->js = array('//api-maps.yandex.ru/2.1/?lang=ru_RU', 'admin/createMunicipalityMap.js');
+        $this->template->js = array('//api-maps.yandex.ru/2.1/?lang=ru_RU', 'admin/createMap.js');
         $this->template->content = \View::forge('municipalities/create');
 
     }
@@ -115,7 +115,7 @@ class Controller_Municipalities extends Controller_Admin
         
         $this->template->js = array('admin/jquery.jeditable.mini.js', 
             '//api-maps.yandex.ru/2.1/?lang=ru_RU', 
-            'admin/createMunicipalityMap.js'
+            'admin/createMap.js'
         );
         $this->template->content = \View::forge('municipalities/edit');
     }

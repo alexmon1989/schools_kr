@@ -1,5 +1,8 @@
 <h2>Список <span class='text-muted'>Муниципальных образований</span></h2>
 <br>
+
+<p><?php echo Html::anchor('admin/municipalities/create', '<span class="glyphicon glyphicon-plus"></span> Добавить', array('class' => 'btn btn-success')); ?></p>
+
 <?php if ($municipalities): ?>
 <table class="table table-striped" id="municipalities_table">
     <thead>
@@ -41,7 +44,4 @@
 <?php else: ?>
 <p>Информация отсутствует.</p>
 
-<?php endif; ?><p>
-	<?php echo Html::anchor('admin/municipalities/create', '<span class="glyphicon glyphicon-plus"></span> Добавить', array('class' => 'btn btn-success')); ?>
-
-</p>
+<?php endif; ?>

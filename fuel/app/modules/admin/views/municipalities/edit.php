@@ -3,7 +3,7 @@
 
 <p><?php echo Html::anchor('admin/municipalities', 'Назад к списку'); ?></p>
 
-<?php echo render('municipalities/_form_edit'); ?>
+<?php echo render('municipalities/_form'); ?>
 
 <?php echo render('municipalities/_table_json'); ?>
 

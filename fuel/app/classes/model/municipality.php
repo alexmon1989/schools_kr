@@ -4,9 +4,7 @@
  * Модель для управления объектом "Муниципалитет"
  */
 
-use Orm\Model;
-
-class Model_Municipality extends Model
+class Model_Municipality extends Model_MyModel
 {
     protected static $_properties = array(
         'id',

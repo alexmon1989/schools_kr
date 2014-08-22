@@ -4,7 +4,7 @@
  * Модель для управления объектом "Учреждение"
  */
 
-class Model_Institution extends \Orm\Model
+class Model_Institution extends Model_MyModel
 {
 	protected static $_properties = array(
 		'id',
@@ -39,7 +39,7 @@ class Model_Institution extends \Orm\Model
         protected static $_belongs_to = array(
                 'municipality' => array(
                     'key_from' => 'municipality_id',
-                    'model_to' => 'Model_Municipalities',
+                    'model_to' => 'Model_Municipality',
                     'key_to' => 'id',
                     'cascade_save' => true,
                     'cascade_delete' => false,
@@ -60,23 +60,27 @@ class Model_Institution extends \Orm\Model
                 )
         );
 
+        /**
+         * Метод для валидации данных при поступлении в БД
+         */
 	public static function validate($factory)
 	{
-		$val = Validation::forge($factory);
-		$val->add_field('municipality_id', 'Муниципальное образование', 'required|valid_string[numeric]');
-		$val->add_field('institution_kind_id', 'Вид учреждения', 'required|valid_string[numeric]');
-		$val->add_field('institiution_type_id', 'Тип учреждения', 'required|valid_string[numeric]');
-		$val->add_field('full_title', 'Полное название', 'required|max_length[255]');
-		$val->add_field('short_title', 'Короткое название', 'required|max_length[100]');
-		$val->add_field('address', 'Address', 'required|max_length[255]');
-		$val->add_field('telephone', 'Telephone', 'required|max_length[45]');
-		$val->add_field('site', 'Site', 'required|max_length[45]');
-		$val->add_field('ogrn_inn', 'Ogrn Inn', 'required|max_length[45]');
-		$val->add_field('data_json', 'Data Json', 'required');
-		$val->add_field('latitude', 'Latitude', 'required');
-		$val->add_field('longtitude', 'Longtitude', 'required');
+            $val = Validation::forge($factory);
+            $val->add_callable('MyRules');
+            
+            $val->add_field('municipality_id', 'Муниципальное образование', 'required|valid_string[numeric]');
+            $val->add_field('institution_kind_id', 'Вид учреждения', 'required|valid_string[numeric]');
+            $val->add_field('institiution_type_id', 'Тип учреждения', 'required|valid_string[numeric]');
+            $val->add_field('full_title', 'Полное название', 'required|max_length[255]');
+            $val->add_field('short_title', 'Короткое название', 'required|max_length[100]');
+            $val->add_field('address', 'Адрес', 'max_length[255]');
+            $val->add_field('telephone', 'Телефон', 'max_length[45]');
+            $val->add_field('site', 'Сайт', 'max_length[45]');
+            $val->add_field('ogrn_inn', 'ОГРН/ИНН', 'max_length[45]');
+            $val->add_field('latitude', 'Широта', 'required|is_float');
+            $val->add_field('longtitude', 'Долгота', 'required|is_float');
 
-		return $val;
+            return $val;
 	}
 
 }
