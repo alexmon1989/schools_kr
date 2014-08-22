@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50616
 File Encoding         : 65001
 
-Date: 2014-08-21 17:10:15
+Date: 2014-08-22 15:53:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,14 +25,14 @@ CREATE TABLE `institutions` (
   `institution_kind_id` int(11) NOT NULL,
   `institution_type_id` int(11) NOT NULL,
   `full_title` varchar(255) NOT NULL,
-  `short_title` varchar(100) DEFAULT NULL,
+  `short_title` varchar(100) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `telephone` varchar(45) DEFAULT NULL,
   `site` varchar(45) DEFAULT NULL,
   `ogrn_inn` varchar(45) DEFAULT NULL,
   `data_json` text,
-  `latitude` float DEFAULT NULL,
-  `longtitude` float DEFAULT NULL,
+  `latitude` float NOT NULL,
+  `longtitude` float NOT NULL,
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -120,12 +120,13 @@ CREATE TABLE `municipalities` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of municipalities
 -- ----------------------------
 INSERT INTO `municipalities` VALUES ('2', 'Краснодарский район', '45.0225', '38.9715', '{\"educational_institution\":\"4\",\"this_year_repair\":\"200\",\"last_year_repair\":\"1\"}', '1408625713', '1408627011');
+INSERT INTO `municipalities` VALUES ('3', 'Еще один район', '45.1358', '38.7552', null, '1408702653', '1408702653');
 
 -- ----------------------------
 -- Table structure for `users`
@@ -149,7 +150,7 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'admin', '3QH0dwAwtrpYL0/aRtjkjkx0YUgqKOBSclSJ1Di3hEE=', '100', 'alex.mon1989@gmail.com', '1408599972', 'eeaa1fe59595b9e42b6702f5a8a88b1b01f0227f', 'a:0:{}', '1408347389', '1408626090');
+INSERT INTO `users` VALUES ('1', 'admin', 'TSpEHn+OhzgDc/ur859gzTO7SESTwKGAvnK136vjvqs=', '100', 'alex.mon1989@gmail.com', '1408695543', 'aa95ef82c01c756f0ffc7bf6913aea6f061aceea', 'a:0:{}', '1408347389', '1408687108');
 
 -- ----------------------------
 -- Table structure for `users_clients`
