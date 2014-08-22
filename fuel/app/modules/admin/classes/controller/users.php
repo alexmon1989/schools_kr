@@ -114,14 +114,13 @@ class Controller_Users extends Controller_Admin
                 {
                     try
                     {
-                        // Сбрасіваем пароль
-                        $new_password = \Auth::reset_password($user->username);
-                        
                         $arr = array(
-                            'email'        => \Input::post('email'),
+                            'email' => \Input::post('email'),
                         );
                         if (trim(\Input::post('password') != ''))
                         {
+                            // Сбрасіваем пароль
+                            $new_password = \Auth::reset_password($user->username);
                             $arr['old_password'] = $new_password;
                             $arr['password'] = \Input::post('password');
                         }

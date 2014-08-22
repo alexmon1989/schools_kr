@@ -1,4 +1,4 @@
-<h2>Новое <span class='text-muted'>Муниципалитетное образование</span></h2>
+<h2>Новое <span class='text-muted'>Муниципальное образование</span></h2>
 <br>
 
 <div class="alert alert-info" role="alert">

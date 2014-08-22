@@ -28,7 +28,7 @@
 </head>
 <body>
 
-	<?php if ($current_user): ?>
+	<?php if (isset($current_user)): ?>
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
