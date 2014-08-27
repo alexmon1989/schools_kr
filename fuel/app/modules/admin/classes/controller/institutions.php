@@ -18,12 +18,8 @@ class Controller_Institutions extends Controller_Admin
      * Действие для отображения списка учреждений
      */
     public function action_index()
-    {
-        $data['institutions'] = \Model_Institution::find('all', array(
-            'related' => array('municipality', 'institution_kind', 'institution_type'),
-            'order_by' => array('id' => 'DESC')
-        ));
-        $this->template->content = \View::forge('institutions/index', $data);
+    {        
+        $this->template->content = \View::forge('institutions/index');
     }
 
     /**
@@ -40,7 +36,7 @@ class Controller_Institutions extends Controller_Admin
                 $institution = \Model_Institution::forge(array(
                     'municipality_id' => \Input::post('municipality_id'),
                     'institution_kind_id' => \Input::post('institution_kind_id'),
-                    'institiution_type_id' => \Input::post('institiution_type_id'),
+                    'institution_type_id' => \Input::post('institution_type_id'),
                     'full_title' => \Input::post('full_title'),
                     'short_title' => \Input::post('short_title'),
                     'address' => \Input::post('address'),
@@ -139,21 +135,26 @@ class Controller_Institutions extends Controller_Admin
 
     }
 
+    /**
+     * Удаление записи
+     * 
+     * @param int $id
+     */
     public function action_delete($id = null)
     {
-            if ($institution = Model_Institution::find($id))
-            {
-                    $institution->delete();
+        if ($institution = \Model_Institution::find($id))
+        {
+            $institution->delete();
 
-                    Session::set_flash('success', e('Deleted institution #'.$id));
-            }
+            \Session::set_flash('success', e('Удалено учебное учреждение с идентификатором #'.$id));
+        }
 
-            else
-            {
-                    Session::set_flash('error', e('Could not delete institution #'.$id));
-            }
+        else
+        {
+            \Session::set_flash('error', e('невозможно удалить учебное учреждение с идентификатором #'.$id));
+        }
 
-            Response::redirect('admin/institutions');
+        \Response::redirect('admin/institutions');
 
     }
 }

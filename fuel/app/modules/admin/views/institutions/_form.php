@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <?php echo Form::label('Тип учреждения*', 'institiution_type_id', array('class'=>'control-label')); ?>
-                <?php echo Form::select('institiution_type_id', Input::post('institiution_type_id', isset($institution) ? $institution->institiution_type_id : ''), $types, array('class' => 'form-control')); ?>
+                <?php echo Form::select('institution_type_id', Input::post('institution_type_id', isset($institution) ? $institution->institution_type_id : ''), $types, array('class' => 'form-control')); ?>
             </div>
 
             <div class="form-group">

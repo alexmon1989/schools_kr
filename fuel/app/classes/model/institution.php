@@ -70,7 +70,7 @@ class Model_Institution extends Model_MyModel
             
             $val->add_field('municipality_id', 'Муниципальное образование', 'required|valid_string[numeric]');
             $val->add_field('institution_kind_id', 'Вид учреждения', 'required|valid_string[numeric]');
-            $val->add_field('institiution_type_id', 'Тип учреждения', 'required|valid_string[numeric]');
+            $val->add_field('institution_type_id', 'Тип учреждения', 'required|valid_string[numeric]');
             $val->add_field('full_title', 'Полное название', 'required|max_length[255]');
             $val->add_field('short_title', 'Короткое название', 'required|max_length[100]');
             $val->add_field('address', 'Адрес', 'max_length[255]');

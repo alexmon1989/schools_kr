@@ -1,17 +1,23 @@
 function Map(){        
 };
-
-Map.prototype.coords = [45.023877, 38.970157];
-
+	
 Map.prototype.init = function (){
+    
+    var latitude = $("#form_latitude").val();
+    var longtitude = $("#form_longtitude").val();
+    if (latitude !== '' && longtitude !== '')
+        Map.prototype.coords = [latitude, longtitude];
+    else
+        Map.prototype.coords = [45.023877, 38.970157];
+    
     this.myMap = new ymaps.Map('YMapsID', {
-        center: [45.023877, 38.970157], // Краснодар
+        center: Map.prototype.coords,
         zoom: 10
     });
     this.myMap.controls.remove('trafficControl');
     
     //Определяем метку и добавляем ее на карту				
-    Map.prototype.myPlacemark = new ymaps.Placemark([45.023877, 38.970157],{}, {preset: "twirl#redIcon", draggable: true});	
+    Map.prototype.myPlacemark = new ymaps.Placemark(Map.prototype.coords,{}, {preset: "twirl#redIcon", draggable: true});	
     this.myMap.geoObjects.add(Map.prototype.myPlacemark);
 
     //Отслеживаем событие перемещения метки
