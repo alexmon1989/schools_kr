@@ -99,7 +99,7 @@ class Controller_Admin extends Controller_Base
             // Последних 5 учреждений
             $data['last_insts'] = \Model_Institution::find('all', array(
                 'limit' => 5,
-                'order_by' => array('id' => 'desc')
+                'order_by' => array('updated_at' => 'desc')
             ));
             
             $this->template->title = 'Начало работы';

@@ -21,14 +21,14 @@
 	</div>
 	<div class="col-md-4">
             <h3>Последние учреждения</h3>
-            <p>Последних 5 добавленных учреждений с быстрой навигацией к ним:</p>
+            <p>Последних 5 добавленных/редактированных учреждений с быстрой навигацией к ним:</p>
             <?php if ($last_insts): ?>
             <table class="table table-striped">                    
                 <tbody>
                     <?php foreach ($last_insts as $value): ?>
                         <tr>
                             <td><b><?php echo $value->short_title; ?></b></td>
-                            <td><b><?php echo Date::forge($value->created_at)->format('%Y.%m.%d'); ?></b></td>
+                            <td><b><?php echo Date::forge($value->updated_at)->format('%Y.%m.%d %H:%M'); ?></b></td>
                             <td><?php echo Html::anchor('admin/institutions/edit/'.$value->id, '<span class="glyphicon glyphicon-edit"></span>', array('title' => 'Редактировать')); ?></td>
                         </tr>                    
                     <?php endforeach; ?>
